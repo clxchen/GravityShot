@@ -4,6 +4,7 @@ using System.Collections;
 public class playercontrol : MonoBehaviour {
     public float moveSpeed = 5f ;
 
+
     private int inputLayer ;
     Camera camera ;
     Vector3 m_moveDirection;
@@ -48,12 +49,15 @@ public class playercontrol : MonoBehaviour {
 
 
 
-        m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized ;
+       
+
+        m_moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         
     }   
 
     void FixedUpdate()
     {
-        rigid.MovePosition(transform.position + transform.TransformDirection(m_moveDirection) * moveSpeed * Time.deltaTime);
+        // move. depends on parent direction set up
+        rigid.MovePosition(transform.position + transform.parent.transform.TransformDirection(m_moveDirection) * moveSpeed * Time.deltaTime);
     }
 }
