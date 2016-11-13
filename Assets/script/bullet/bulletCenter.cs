@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Networking ;
-
 
 [System.Serializable]
 public class BulletType
@@ -14,7 +12,7 @@ public class BulletType
     public Queue<GameObject> pool = new Queue<GameObject>() ;
 }
 
-public class bulletCenter :NetworkBehaviour  {
+public class bulletCenter :MonoBehaviour  {
 
     public int num_player = 1;
     private List<Queue<GameObject>> m_objPools;
@@ -23,11 +21,11 @@ public class bulletCenter :NetworkBehaviour  {
     // need to add tag after custom editor complete!
     void Start()
     {
+
         CmdGenerateBullet();
+        
     }
 
-
-    [Command]
     void CmdGenerateBullet()
     {
         m_objPools = new List<Queue<GameObject>>();
@@ -39,7 +37,6 @@ public class bulletCenter :NetworkBehaviour  {
             {
                 GameObject obj = null;
                 createBullet(allPrefabs[i], out obj);
-                NetworkServer.Spawn(obj);
             }
 
             m_objPools.Add(tmp);

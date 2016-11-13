@@ -20,7 +20,6 @@ public class bullet : NetworkBehaviour {
 	}
 	
 	// Update is called once per frame
-    [ServerCallback]
 	void Update () {
         if (gameObject.activeSelf)
         {
@@ -46,6 +45,9 @@ public class bullet : NetworkBehaviour {
 
     }
 
+   
+
+
     public bool fireable()
     {
         
@@ -55,7 +57,7 @@ public class bullet : NetworkBehaviour {
 
 
     // fire init
-    public void fireInit( Vector3 position, Vector3 forwardRotation )
+    public void CmdfireInit( Vector3 position, Vector3 forwardRotation )
     {
         gameObject.SetActive(true);
         transform.forward = forwardRotation;
@@ -102,6 +104,14 @@ public class bullet : NetworkBehaviour {
     public string getTag() { return this.tag; }
 
 
+    void OnTriggerEnter( Collider collider )
+    {
+        Debug.Log( gameObject.name + "  hit   "  + collider.gameObject.name );
 
+
+
+        Destroy(gameObject);
+
+    }
 
 }

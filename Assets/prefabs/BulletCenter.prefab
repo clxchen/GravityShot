@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000013244675402}
+  m_IsPrefabParent: 1
+--- !u!1 &1000013244675402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013508905802}
+  - 114: {fileID: 114000014022107974}
+  - 114: {fileID: 114000010861356074}
+  m_Layer: 0
+  m_Name: BulletCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000013508905802
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013244675402}
+  m_LocalRotation: {x: 0.03553249, y: 0.6892527, z: 0.037256226, w: 0.7226895}
+  m_LocalPosition: {x: -0.4, y: 0.57, z: 1.01}
+  m_LocalScale: {x: 0.18515268, y: 0.18515272, z: 0.18515272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000010861356074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013244675402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 203
+    i1: 168
+    i2: 39
+    i3: 158
+    i4: 159
+    i5: 140
+    i6: 150
+    i7: 116
+    i8: 24
+    i9: 200
+    i10: 99
+    i11: 53
+    i12: 240
+    i13: 108
+    i14: 204
+    i15: 236
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114000014022107974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013244675402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93654acc21583cd489c50df43e71b9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  num_player: 1
+  allPrefabs:
+  - prefab: {fileID: 1000010930346200, guid: 95087a9a45048104fb7349ffd2c81a52, type: 2}
+    tag: normal
+    maxBulletInQueue: 20
+  - prefab: {fileID: 1000012322754394, guid: ff6300585aeeee74cb1cd7e2b3f8fedd, type: 2}
+    tag: cube
+    maxBulletInQueue: 10
