@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-
-public class bullet : MonoBehaviour {
+public class bullet : NetworkBehaviour {
 
 
    
@@ -16,10 +16,11 @@ public class bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       
+        centerObj = GameObject.Find("planet").transform;
 	}
 	
 	// Update is called once per frame
+    [ServerCallback]
 	void Update () {
         if (gameObject.activeSelf)
         {

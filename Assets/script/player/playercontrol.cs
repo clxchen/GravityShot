@@ -13,11 +13,17 @@ public class playercontrol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
         // only hit on input layer
         inputLayer = LayerMask.NameToLayer("Input");
         inputLayer = ~inputLayer;
         rigid = gameObject.GetComponentInParent<Rigidbody>();
         camera = Camera.main;
+        
+
+
+
 	}
 	
 	// Update is called once per frame

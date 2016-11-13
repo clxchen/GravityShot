@@ -7,7 +7,7 @@ public class get_gravity : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        planet = GameObject.Find("planet").GetComponent<gravity_planet>();
 	}
 	
 	// Update is called once per frame
