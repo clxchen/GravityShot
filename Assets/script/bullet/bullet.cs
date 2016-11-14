@@ -103,14 +103,14 @@ public class bullet : NetworkBehaviour {
 
     public string getTag() { return this.tag; }
 
-
+    [ServerCallback]
     void OnTriggerEnter( Collider collider )
     {
         Debug.Log( gameObject.name + "  hit   "  + collider.gameObject.name );
 
 
 
-        Destroy(gameObject);
+        NetworkServer.Destroy(gameObject);
 
     }
 

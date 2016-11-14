@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
+
 
 [System.Serializable]
 public class BulletType
@@ -12,20 +14,21 @@ public class BulletType
     public Queue<GameObject> pool = new Queue<GameObject>() ;
 }
 
-public class bulletCenter :MonoBehaviour  {
+public class bulletCenter :NetworkBehaviour  {
 
     public int num_player = 1;
     private List<Queue<GameObject>> m_objPools;
     public BulletType[] allPrefabs;
 
     // need to add tag after custom editor complete!
-    void Start()
+    public override void OnStartServer()
     {
 
         CmdGenerateBullet();
         
     }
 
+ 
     void CmdGenerateBullet()
     {
         m_objPools = new List<Queue<GameObject>>();
@@ -37,6 +40,7 @@ public class bulletCenter :MonoBehaviour  {
             {
                 GameObject obj = null;
                 createBullet(allPrefabs[i], out obj);
+                
             }
 
             m_objPools.Add(tmp);
@@ -45,17 +49,42 @@ public class bulletCenter :MonoBehaviour  {
 
 
 
+    [Command]
+    public void CmdFireBullet( string type )
+    {
+        for (int i = 0; i < allPrefabs.Length; i++)
+        {
+            if (allPrefabs[i].tag == type)
+            {
+                GameObject obj = null;
+                if ( allPrefabs[i].pool.Count == 0 )
+                {
+                    
+                    createBullet(allPrefabs[i], out obj);
+                    
+                }
+
+                obj = allPrefabs[i].pool.Dequeue();
+                bullet bul = obj.GetComponent<bullet>();
+               // bul.CmdfireInit();
+            }
+
+        }
+    }
+
+
 
     // generate a bullet from bulletType
     void createBullet( BulletType type, out GameObject bullet )
     {
         bullet = GameObject.Instantiate(type.prefab);
         bullet.GetComponent<bullet>().setTag(type.tag);
+        NetworkServer.Spawn(bullet);
         bullet.SetActive(false);
         type.pool.Enqueue(bullet);
     }
 
-    
+ 
 
 
 

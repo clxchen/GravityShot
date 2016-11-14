@@ -17,7 +17,9 @@ public class fireControl : NetworkBehaviour {
     float timer = 99 ;
     // Use this for initialization
     void Start() {
-       
+        if (isLocalPlayer)
+            m_bulletCenter = GameObject.Find("BulletCenter").GetComponent<bulletCenter>();
+
         m_bulletType = m_bulletCenter.getBulletType("cube");
     }
 	
@@ -26,7 +28,7 @@ public class fireControl : NetworkBehaviour {
         
 	    if ( timer > fire_rate&& Input.GetMouseButton(0))
         {
-            CmdFire();
+            CmdFire(m_bulletType.tag);
             timer = 0;
         }
 
@@ -35,20 +37,28 @@ public class fireControl : NetworkBehaviour {
 
 
     [Command]
-    void CmdFire()
+    void CmdFire( string bulletStr )
     {
         
         GameObject obj = null;
-        m_bulletType = m_bulletCenter.getBulletType("cube");
+        /*
+        m_bulletType = m_bulletCenter.getBulletType(bulletStr);
         // get one avaible bullet
         if ( m_bulletType.pool.Count == 0)  // no bullet! create one
         {
             m_bulletCenter.getBullet(m_bulletType.tag, out obj);
+            obj = m_bulletType.pool.Dequeue();
+            Debug.Log("object pool null");
 
         }else
         {
             obj = m_bulletType.pool.Dequeue();
+            Debug.Log("get bullet from object pool");
         }
+        */
+
+
+        obj = GameObject.Instantiate(m_bulletCenter.getBulletType(bulletStr).prefab);
 
 
         // handle fire procedure
@@ -69,13 +79,6 @@ public class fireControl : NetworkBehaviour {
         
 
 
-    }
-
-    [Command]
-    void CmdFireABullet( GameObject obj )
-    {
-        obj.SetActive(true);
-        NetworkServer.Spawn(obj);
     }
 
     public void getPool(  )
