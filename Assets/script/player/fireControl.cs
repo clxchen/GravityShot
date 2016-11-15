@@ -67,9 +67,10 @@ public class fireControl : NetworkBehaviour {
 
             
             bullet bul = obj.GetComponent<bullet>();
+            NetworkServer.Spawn(obj);
             bul.CmdfireInit(bodyTrans.transform.position+ bodyTrans.transform.up*0.1f+ bodyTrans.transform.forward*0.3f, bodyTrans.transform.forward);
             bul.setOwner(this.gameObject);
-            NetworkServer.Spawn(obj);
+            
 
         }
         else // something wrong!!
