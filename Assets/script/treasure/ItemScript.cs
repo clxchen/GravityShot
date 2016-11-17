@@ -27,16 +27,17 @@ public class ItemScript : NetworkBehaviour {
 
 
     // pick up
-    [ServerCallback]
+   [ServerCallback]
     void OnTriggerEnter(  Collider  collider )
     {
         // player
         if ( collider.tag == "Player" )
         {
-            itemReciver receiver = collider.GetComponent<itemReciver>();
+            itemReceiver receiver = collider.gameObject.transform.parent.GetComponent<itemReceiver>();
             if( receiver )
             {
                 receiver.RpcReceiveItem(bulletItem);
+                NetworkServer.Destroy(gameObject);
             }
 
         }

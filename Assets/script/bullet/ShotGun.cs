@@ -19,7 +19,7 @@ public class ShotGun : bullet {
            
 
             float offset = (( i  - (cell_amount / 2f)) / cell_amount) * angle ;
-            Debug.Log(i + " :  " + offset.ToString());
+            //Debug.Log(i + " :  " + offset.ToString());
             if ( i == 19 )
             {
                 ;

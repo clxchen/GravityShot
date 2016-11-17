@@ -14,7 +14,8 @@ public class fireControl : NetworkBehaviour {
     public BulletType m_bulletType;
 
 
-    private string bulletType = "normal";
+    private string defaultBullet = "normal";
+
 
     float timer = 99 ;
     private int bulletCount = 0;
@@ -24,7 +25,7 @@ public class fireControl : NetworkBehaviour {
         if (isLocalPlayer)
             m_bulletCenter = GameObject.Find("BulletCenter").GetComponent<bulletCenter>();
 
-        m_bulletType = m_bulletCenter.getBulletType("cube");
+        m_bulletType = m_bulletCenter.getBulletType(defaultBullet);
     }
 	
 	// Update is called once per frame
@@ -42,7 +43,7 @@ public class fireControl : NetworkBehaviour {
             if ( bulletCount >= m_bulletType.maxBullet && m_bulletType.maxBullet != -1 )
             {
                 // reset to basic bullet
-                m_bulletType = m_bulletCenter.getBulletType("cube");
+                m_bulletType = m_bulletCenter.getBulletType(defaultBullet);
                 bulletCount = 0;
             }
         }

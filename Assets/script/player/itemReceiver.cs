@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class itemReciver : NetworkBehaviour {
+public class itemReceiver : NetworkBehaviour {
 
     fireControl fireControl;
 
@@ -15,13 +15,15 @@ public class itemReciver : NetworkBehaviour {
 
 
     [ClientRpc]
-    public void RpcReceiveItem( BulletType bulletType )
+    public void RpcReceiveItem(BulletType bulletType)
     {
-        if ( isLocalPlayer ) {
+        if (isLocalPlayer)
+        {
             if (fireControl)
             {
                 fireControl.getBullet(bulletType);
-            } else
+            }
+            else
             {
                 Debug.Log("can't find fire control in this player");
             }
@@ -29,8 +31,4 @@ public class itemReciver : NetworkBehaviour {
     }
 
 
-    
-
-
-    
 }

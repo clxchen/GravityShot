@@ -17,7 +17,6 @@ public class BulletType
 public class bulletCenter :NetworkBehaviour  {
 
     public int num_player = 1;
-    private List<Queue<GameObject>> m_objPools;
     public BulletType[] allPrefabs;
 
     // need to add tag after custom editor complete!
@@ -28,7 +27,10 @@ public class bulletCenter :NetworkBehaviour  {
 
 
     
-
+    public BulletType[] GetAllBullet()
+    {
+        return allPrefabs;
+    }
 
     public BulletType getBulletType( string str )
     {
