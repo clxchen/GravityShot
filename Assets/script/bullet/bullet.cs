@@ -120,10 +120,12 @@ public class bullet : NetworkBehaviour {
 
     // hit
     [ServerCallback]
-    protected virtual void OnTriggerEnter( Collider collider )
+    protected virtual void OnTriggerEnter(Collider collider)
     {
-        Debug.Log( gameObject.name + "  hit   "  + collider.gameObject.name );
-
+        Debug.Log(gameObject.name + "  hit   " + collider.gameObject.name);
+        if (collider.tag == "TreasureCase") {
+            collider.GetComponent<treasureCase>().OpenCase();
+        }
 
 
         NetworkServer.Destroy(gameObject);

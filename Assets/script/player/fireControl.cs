@@ -12,9 +12,13 @@ public class fireControl : NetworkBehaviour {
 
     public bulletCenter m_bulletCenter ;
     public BulletType m_bulletType;
-  
+
+
+    private string bulletType = "normal";
 
     float timer = 99 ;
+    private int bulletCount = 0;
+
     // Use this for initialization
     void Start() {
         if (isLocalPlayer)
@@ -26,10 +30,21 @@ public class fireControl : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-	    if ( timer > fire_rate&& Input.GetMouseButton(0))
+	    if ( timer > m_bulletType.fire_rate&& Input.GetMouseButton(0))
         {
             CmdFire(m_bulletType.tag);
             timer = 0;
+            bulletCount++;
+
+
+            // check bullet amount
+            // -1 means limitless
+            if ( bulletCount >= m_bulletType.maxBullet && m_bulletType.maxBullet != -1 )
+            {
+                // reset to basic bullet
+                m_bulletType = m_bulletCenter.getBulletType("cube");
+                bulletCount = 0;
+            }
         }
 
         timer += Time.deltaTime;
@@ -41,22 +56,6 @@ public class fireControl : NetworkBehaviour {
     {
         
         GameObject obj = null;
-        /*
-        m_bulletType = m_bulletCenter.getBulletType(bulletStr);
-        // get one avaible bullet
-        if ( m_bulletType.pool.Count == 0)  // no bullet! create one
-        {
-            m_bulletCenter.getBullet(m_bulletType.tag, out obj);
-            obj = m_bulletType.pool.Dequeue();
-            Debug.Log("object pool null");
-
-        }else
-        {
-            obj = m_bulletType.pool.Dequeue();
-            Debug.Log("get bullet from object pool");
-        }
-        */
-
 
         obj = GameObject.Instantiate(m_bulletCenter.getBulletType(bulletStr).prefab);
 
@@ -81,13 +80,11 @@ public class fireControl : NetworkBehaviour {
 
 
     }
-
-    public void getPool(  )
+    
+    public void getBullet( BulletType type )
     {
-
-        m_bulletCenter.getBulletPool(m_bulletType.tag,out m_bulletType.pool);
-        Debug.Log(m_bulletType.pool.Count);
+        this.m_bulletType = type;
+        bulletCount = 0;
     }
-
 
 }
