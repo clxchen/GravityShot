@@ -4,7 +4,12 @@ using UnityEngine.Networking;
 
 public class treasureCase : NetworkBehaviour {
 
+
+    public delegate void respawnerRespond(int number) ;
+    public respawnerRespond responder ;
+
     private BulletType bulletItem;
+    private int number;
 
 	// Use this for initialization
 	void Start () {
@@ -17,10 +22,15 @@ public class treasureCase : NetworkBehaviour {
 	}
 
 
-    public void setCaseContend( BulletType contend  )
+    public void setCaseContend( BulletType contend   )
     {
        
         bulletItem = contend;
+    }
+
+    public void setNumber( int number )
+    {
+        this.number = number;
     }
 
 
@@ -42,8 +52,9 @@ public class treasureCase : NetworkBehaviour {
             }
         }
 
-
-        NetworkServer.Destroy(gameObject);
+        responder(number);
+        Debug.Log("destroyed");
+        NetworkServer.Destroy(this.gameObject);
     }
 
 

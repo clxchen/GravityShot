@@ -58,7 +58,7 @@ GameObject:
   - 65: {fileID: 65000010601148782}
   m_Layer: 0
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,9 +78,10 @@ GameObject:
   - 114: {fileID: 114000010886080388}
   - 114: {fileID: 114000013992902000}
   - 114: {fileID: 114000013632711338}
+  - 114: {fileID: 114000012260030294}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,6 +356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df807f647c4080443badb20b6ea53b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012260030294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014014216658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad2c0041dd6e44ca0ce924036e5083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013619049636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,8 +396,10 @@ MonoBehaviour:
     type: 2}
   m_bulletType:
     prefab: {fileID: 0}
+    item: {fileID: 0}
     tag: 
-    maxBulletInQueue: 0
+    fire_rate: 0
+    maxBullet: 0
 --- !u!114 &114000013645812664
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,8 +5,10 @@ using UnityEngine.Networking;
 public class ItemScript : NetworkBehaviour {
 
 
+    public float liftTime = 10f;
+
     BulletType bulletItem;
-    
+    private float timer = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,8 @@ public class ItemScript : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        timer += Time.deltaTime;
+        if (timer >= liftTime) NetworkServer.Destroy(gameObject);
 	}
 
     public void setAttribute( BulletType type )

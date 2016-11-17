@@ -2710,6 +2710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efeeedd4966a01543a5d2e6ef8966150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treasureCasePrefab: {fileID: 1000013295452810, guid: 04b02a680e9425a4fa6467b9d7c461af,
+    type: 2}
 --- !u!114 &1246062798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3456,6 +3458,24 @@ Prefab:
       propertyPath: allPrefabs.Array.data[1].fire_rate
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014022107974, guid: cba8279e9f8c967418c86335f06cccec,
+        type: 2}
+      propertyPath: allPrefabs.Array.data[1].item
+      value: 
+      objectReference: {fileID: 1000010484264258, guid: 07ca058f1c31b7847a67cedd087be52b,
+        type: 2}
+    - target: {fileID: 114000014022107974, guid: cba8279e9f8c967418c86335f06cccec,
+        type: 2}
+      propertyPath: allPrefabs.Array.data[0].item
+      value: 
+      objectReference: {fileID: 1000014009858100, guid: 557db20769c17e24281ad73fd0886fb3,
+        type: 2}
+    - target: {fileID: 114000014022107974, guid: cba8279e9f8c967418c86335f06cccec,
+        type: 2}
+      propertyPath: allPrefabs.Array.data[2].item
+      value: 
+      objectReference: {fileID: 1000013640872754, guid: 965b568e56e80dd4bb0cf61d746caa51,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114000010861356074, guid: cba8279e9f8c967418c86335f06cccec, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cba8279e9f8c967418c86335f06cccec, type: 2}
@@ -3576,6 +3596,10 @@ MonoBehaviour:
   - {fileID: 1000013244675402, guid: cba8279e9f8c967418c86335f06cccec, type: 2}
   - {fileID: 1000011393353798, guid: 31ba6ae0cf4b9a94ea58991192a301eb, type: 2}
   - {fileID: 1000011522322754, guid: 3694be53ba3d8df429ea51fdb3b612a9, type: 2}
+  - {fileID: 1000013295452810, guid: 04b02a680e9425a4fa6467b9d7c461af, type: 2}
+  - {fileID: 1000010484264258, guid: 07ca058f1c31b7847a67cedd087be52b, type: 2}
+  - {fileID: 1000014009858100, guid: 557db20769c17e24281ad73fd0886fb3, type: 2}
+  - {fileID: 1000013640872754, guid: 965b568e56e80dd4bb0cf61d746caa51, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
