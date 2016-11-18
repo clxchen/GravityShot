@@ -27,7 +27,6 @@ public class rocket : bullet {
             }
         }
 
-        //explosionParticle();
         m_explose_particle.transform.parent = null;
         m_explose_particle.Play();
         Destroy(m_explose_particle.gameObject, m_explose_particle.duration);
@@ -37,13 +36,6 @@ public class rocket : bullet {
 
     }
 
-    [ClientCallback]
-    void explosionParticle()
-    {
-        m_explose_particle.transform.parent = null;
-        m_explose_particle.Play();
-        Destroy(m_explose_particle.gameObject, m_explose_particle.duration);
-    }
 
 
 
