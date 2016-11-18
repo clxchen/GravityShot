@@ -7,6 +7,8 @@ public class bullet : NetworkBehaviour {
 
    
     public float m_speed = 5f;
+    // gun point offset to avoid hit self when firing.
+    public float fireOffset = 0.2f;
     public Transform centerObj;         // fly around with this object
     public float range ;
 
@@ -75,7 +77,7 @@ public class bullet : NetworkBehaviour {
     {
         gameObject.SetActive(true);
         transform.forward = forwardRotation;
-        transform.position = position;
+        transform.position = position + transform.forward * fireOffset;
         startPos = position;
         distant = 0;
     }

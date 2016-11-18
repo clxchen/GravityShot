@@ -9,7 +9,7 @@ public class ShotGun : bullet {
     public int cell_amount ;
     public float angle ;
 
-
+    
     public override void CmdfireInit(Vector3 position, Vector3 forwardRotation)
     {
         centerObj = GameObject.Find("planet").transform;
@@ -33,7 +33,15 @@ public class ShotGun : bullet {
             //bul.transform.Rotate(0, offset, 0);
             bul.setOwner(this.gameObject);
 
-            NetworkServer.Destroy(gameObject);
+            
         }
     }
+
+
+    IEnumerator delaySelfDestruct()
+    {
+        yield return new WaitForSeconds(.5f);
+        NetworkServer.Destroy(gameObject);
+    }
+
 }

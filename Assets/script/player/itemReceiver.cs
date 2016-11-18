@@ -19,6 +19,7 @@ public class itemReceiver : NetworkBehaviour {
     {
         if (isLocalPlayer)
         {
+            
             if (fireControl)
             {
                 fireControl.getBullet(bulletType);

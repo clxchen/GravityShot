@@ -62,7 +62,7 @@ public class TreasureRespawn : NetworkBehaviour {
         {
             if (caseReadyToRespawn.Count > 0)
             {
-                int index = Random.Range(0, caseReadyToRespawn.Count-1);
+                int index = Random.Range(0, caseReadyToRespawn.Count);
 
                 respawnACase(caseReadyToRespawn[index]);
                 caseReadyToRespawn.RemoveAt(index);
@@ -95,7 +95,7 @@ public class TreasureRespawn : NetworkBehaviour {
 
     void RandomItem( treasureCase tCase )
     {
-        tCase.setCaseContend(allBullet[Random.Range(0, allBullet.Length - 1)]);
+        tCase.setCaseContend(allBullet[Random.Range(0, allBullet.Length)]);
     }
 
 
