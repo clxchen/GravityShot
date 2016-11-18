@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013508905802}
   - 114: {fileID: 114000014022107974}
-  - 114: {fileID: 114000010861356074}
+  - 114: {fileID: 114000010452214374}
   m_Layer: 0
   m_Name: BulletCenter
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010861356074
+--- !u!114 &114000010452214374
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
     i13: 108
     i14: 204
     i15: 236
-  m_ServerOnly: 1
+  m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &114000014022107974
 MonoBehaviour:
@@ -87,8 +87,22 @@ MonoBehaviour:
   num_player: 1
   allPrefabs:
   - prefab: {fileID: 1000010930346200, guid: 95087a9a45048104fb7349ffd2c81a52, type: 2}
+    item: {fileID: 1000014009858100, guid: 557db20769c17e24281ad73fd0886fb3, type: 2}
     tag: normal
-    maxBulletInQueue: 20
+    fire_rate: 0.5
+    maxBullet: -1
   - prefab: {fileID: 1000012322754394, guid: ff6300585aeeee74cb1cd7e2b3f8fedd, type: 2}
+    item: {fileID: 1000010484264258, guid: 07ca058f1c31b7847a67cedd087be52b, type: 2}
+    tag: 87
+    fire_rate: 0.2
+    maxBullet: 50
+  - prefab: {fileID: 1000011393353798, guid: 31ba6ae0cf4b9a94ea58991192a301eb, type: 2}
+    item: {fileID: 1000013640872754, guid: 965b568e56e80dd4bb0cf61d746caa51, type: 2}
     tag: cube
-    maxBulletInQueue: 10
+    fire_rate: 0.5
+    maxBullet: 5
+  - prefab: {fileID: 1000012942930362, guid: 78541baca8029c144893d4b347d68ac4, type: 2}
+    item: {fileID: 1000013876337696, guid: 7d88fce6d2c60cb4fa30972e86621d8f, type: 2}
+    tag: rocket
+    fire_rate: 0.5
+    maxBullet: 5

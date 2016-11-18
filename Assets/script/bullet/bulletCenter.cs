@@ -17,6 +17,9 @@ public class BulletType
 public class bulletCenter :NetworkBehaviour  {
 
     public int num_player = 1;
+    
+
+   
     public BulletType[] allPrefabs;
 
     // need to add tag after custom editor complete!

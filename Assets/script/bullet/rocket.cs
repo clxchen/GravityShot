@@ -26,11 +26,7 @@ public class rocket : bullet {
             }
         }
 
-
-        m_explose_particle.transform.parent = null;
-        m_explose_particle.Play();
-        Destroy(m_explose_particle, m_explose_particle.duration);
-
+        RpcExploseParticle();
         //self destruct
         NetworkServer.Destroy(gameObject);
 
@@ -45,6 +41,15 @@ public class rocket : bullet {
             collider.GetComponent<treasureCase>().OpenCase();
         }
     }
+
+    [ClientRpc]
+    void RpcExploseParticle()
+    {
+        m_explose_particle.transform.parent = null;
+        m_explose_particle.Play();
+        Destroy(m_explose_particle, m_explose_particle.duration);
+    }
+
 
 
     [ServerCallback]

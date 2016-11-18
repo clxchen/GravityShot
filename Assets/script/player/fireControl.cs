@@ -17,7 +17,7 @@ public class fireControl : NetworkBehaviour {
     private string defaultBullet = "rocket";
 
 
-    float timer = 99 ;
+    float timer = 0 ;
     private int bulletCount = 0;
 
     // Use this for initialization
@@ -30,7 +30,10 @@ public class fireControl : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
+        if (m_bulletType == null)
+            m_bulletType = m_bulletCenter.getBulletType(defaultBullet);
+
 	    if ( timer > m_bulletType.fire_rate&& Input.GetMouseButton(0))
         {
             CmdFire(m_bulletType.tag);
