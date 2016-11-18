@@ -7,7 +7,8 @@ public class rocket : bullet {
     public float exploseRange = 5 ;
     public ParticleSystem m_explose_particle;
 
-    void explose()
+    [ClientRpc]
+    void RpcExplose()
     {
         // detect all collider should be consider being hit.
         Collider[]  col = Physics.OverlapSphere( transform.position, exploseRange);
@@ -26,36 +27,41 @@ public class rocket : bullet {
             }
         }
 
-        RpcExploseParticle();
+        //explosionParticle();
+        m_explose_particle.transform.parent = null;
+        m_explose_particle.Play();
+        Destroy(m_explose_particle.gameObject, m_explose_particle.duration);
+
         //self destruct
         NetworkServer.Destroy(gameObject);
 
     }
 
+    [ClientCallback]
+    void explosionParticle()
+    {
+        m_explose_particle.transform.parent = null;
+        m_explose_particle.Play();
+        Destroy(m_explose_particle.gameObject, m_explose_particle.duration);
+    }
 
+
+
+    [ServerCallback]
     void hitObject( Collider collider )
     {
-        //Debug.Log(gameObject.name + "  hit   " + collider.gameObject.name);
+        Debug.Log(gameObject.name + "  hit   " + collider.gameObject.name);
         if (collider.tag == "TreasureCase")
         {
             collider.GetComponent<treasureCase>().OpenCase();
         }
     }
 
-    [ClientRpc]
-    void RpcExploseParticle()
-    {
-        m_explose_particle.transform.parent = null;
-        m_explose_particle.Play();
-        Destroy(m_explose_particle, m_explose_particle.duration);
-    }
-
-
 
     [ServerCallback]
     protected override void destroyBullet()
     {
-        explose();
+        RpcExplose();
     }
 
 
@@ -63,7 +69,7 @@ public class rocket : bullet {
     protected override void OnTriggerEnter( Collider collider )
     {
 
-        explose();
+        RpcExplose();
 
     }
 
