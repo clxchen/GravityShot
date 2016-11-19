@@ -11,14 +11,16 @@ public class rocket : bullet {
     void RpcExplose()
     {
         // detect all collider should be consider being hit.
-        Collider[]  col = Physics.OverlapSphere( transform.position, exploseRange);
+        int inputLayer = LayerMask.NameToLayer("Input");
+        inputLayer = ~(1 << inputLayer);
+        Collider[]  col = Physics.OverlapSphere( transform.position, exploseRange, inputLayer);
         // check hit
         for ( int i = 0; i < col.Length; i++ )
         {
             // ray cast to taget
             Ray ray = new Ray( transform.position, (col[i].transform.position - transform.position).normalized );
             RaycastHit hit;
-            Physics.Raycast(ray, out hit, exploseRange);
+            Physics.Raycast(ray, out hit, exploseRange,inputLayer);
             // if the first collider is the same. means direct hit.
             if (hit.collider == col[i])
             {
