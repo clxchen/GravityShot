@@ -7,13 +7,19 @@ public class treasureCase : NetworkBehaviour {
 
     public delegate void respawnerRespond(int number) ;
     public respawnerRespond responder ;
+    public float item_Height_offset = 0.4f;
 
     private BulletType bulletItem;
     private int number;
 
 	// Use this for initialization
+    [ServerCallback]
 	void Start () {
-	
+        BoxCollider bx = GetComponent<BoxCollider>();
+        Collider[] colliders =  Physics.OverlapSphere( transform.position,  bx.size.x> bx.size.z ? bx.size.x : bx.size.z );
+        for (int i = 0; i < colliders.Length; i++)
+            if (colliders[i].GetComponent<ItemScript>())
+                NetworkServer.Destroy(colliders[i].gameObject);
 	}
 	
 	// Update is called once per frame
@@ -41,7 +47,7 @@ public class treasureCase : NetworkBehaviour {
     {
         if (bulletItem != null) {
             GameObject go = GameObject.Instantiate(bulletItem.item);
-            go.transform.position = this.transform.position;
+            go.transform.position = this.transform.position + transform.up * item_Height_offset;
             go.transform.rotation = this.transform.rotation;
 
             NetworkServer.Spawn(go);
@@ -57,6 +63,9 @@ public class treasureCase : NetworkBehaviour {
         NetworkServer.Destroy(this.gameObject);
     }
 
+
+
+   
 
 
 }
