@@ -5,13 +5,16 @@ using UnityEngine.Networking;
 
 public class NetworkGameManager : NetworkBehaviour {
 
+    // singleton
     static public NetworkGameManager sInstance ;
     static public List<GameObject> players = new List<GameObject>();
+
     public float respawnTime = 2f;
 
 
 	
 	void Awake () {
+        //singleton
         sInstance = this ;
 	}
 	
@@ -21,6 +24,8 @@ public class NetworkGameManager : NetworkBehaviour {
 	}
 
 
+    // player killed
+    // bullet ----> network game manager ----> player
     public void PlayerKillBy( GameObject player, bullet hitBullet )
     {
 

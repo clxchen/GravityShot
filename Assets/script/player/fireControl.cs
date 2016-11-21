@@ -34,6 +34,7 @@ public class fireControl : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+       
         if (m_bulletType == null)
             m_bulletType = m_bulletCenter.getBulletType(defaultBullet);
 

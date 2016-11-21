@@ -10,7 +10,8 @@ public class rocket : bullet {
     [ClientRpc]
     void RpcExplose()
     {
-        // detect all collider should be consider being hit.
+        // detect all collider should be considered being hit.
+        // ignore input collider
         int inputLayer = LayerMask.NameToLayer("Input");
         inputLayer = ~(1 << inputLayer);
         Collider[]  col = Physics.OverlapSphere( transform.position, exploseRange, inputLayer);
@@ -21,7 +22,7 @@ public class rocket : bullet {
             Ray ray = new Ray( transform.position, (col[i].transform.position - transform.position).normalized );
             RaycastHit hit;
             Physics.Raycast(ray, out hit, exploseRange,inputLayer);
-            // if the first collider is the same. means direct hit.
+            // if the first collider is the same. hit!
             if (hit.collider == col[i])
             {
                 Debug.Log("rocket hit : " + col[i].gameObject.name + "   tag : " + col[i].gameObject.tag);
@@ -51,6 +52,7 @@ public class rocket : bullet {
         }
         else if (collider.tag == "Player")
         {
+            // notify game manager
             NetworkGameManager.sInstance.PlayerKillBy(collider.transform.parent.gameObject, this);
         }
     }

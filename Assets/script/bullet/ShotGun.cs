@@ -29,13 +29,13 @@ public class ShotGun : bullet {
             NetworkServer.Spawn(obj);    
             bul.CmdfireInit(position, forwardRotation);
 
+
+            // still buggy...
             //bul.transform.RotateAround( centerObj.position- bul.transform.position, offset );
             bul.transform.Rotate( new Vector3(0, offset,0) );
             Debug.Log(bul.transform.forward);
             //bul.transform.Rotate(0, offset, 0);
-            bul.setOwner(this.gameObject);
-
-            
+            bul.setOwner(this.gameObject);            
         }
     }
 

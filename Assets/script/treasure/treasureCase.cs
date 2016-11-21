@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 public class treasureCase : NetworkBehaviour {
 
 
+    // delegate method. respond to case respawner
     public delegate void respawnerRespond(int number) ;
     public respawnerRespond responder ;
     public float item_Height_offset = 0.4f;
@@ -36,13 +37,14 @@ public class treasureCase : NetworkBehaviour {
 	
 	}
 
-
+    // setting case contend
     public void setCaseContend( BulletType contend   )
     {
        
         bulletItem = contend;
     }
 
+    // set case number
     public void setNumber( int number )
     {
         this.number = number;

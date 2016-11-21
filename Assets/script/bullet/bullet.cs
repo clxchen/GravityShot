@@ -134,6 +134,7 @@ public class bullet : NetworkBehaviour {
             collider.GetComponent<treasureCase>().OpenCase();
         } else if ( collider.tag == "Player" )
         {
+            // notify game manager
             NetworkGameManager.sInstance.PlayerKillBy(collider.transform.parent.gameObject, this);
         }
 

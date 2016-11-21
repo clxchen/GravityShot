@@ -93,13 +93,15 @@ public class TreasureRespawn : NetworkBehaviour {
     }
 
 
+    // random respawn item
     void RandomItem( treasureCase tCase )
     {
+        
         tCase.setCaseContend(allBullet[Random.Range(0, allBullet.Length)]);
     }
 
 
-
+    // case opened respond method
     public void CaseRespond( int number )
     {
 

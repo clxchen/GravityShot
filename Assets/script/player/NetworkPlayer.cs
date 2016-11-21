@@ -20,8 +20,10 @@ public class NetworkPlayer : NetworkBehaviour {
     Transform body;
     Vector3 originPosition;
     float upSpeed = 20f;
+
     [SyncVar]
     bool isDeath = false;
+
     Collider[] colliders;
 
 
@@ -35,6 +37,7 @@ public class NetworkPlayer : NetworkBehaviour {
 
     void Awake()
     {
+        // add to player list
         NetworkGameManager.players.Add(gameObject);
     }
 	
@@ -52,6 +55,7 @@ public class NetworkPlayer : NetworkBehaviour {
     {
         if( isLocalPlayer )
         {
+
             Death( killInfoString );
             StartCoroutine(NetworkGameManager.sInstance.waitForRespawnTime( this ));
 
@@ -62,12 +66,19 @@ public class NetworkPlayer : NetworkBehaviour {
     void Death( string killInfoString )
     {
         killInfoText.text = killInfoString;
+
         originPosition = body.localPosition;
+        
         isDeath = true;
+
+        // disable script when death
         fireCon.enabled = false;
         playerCon.enabled = false;
         itemRec.enabled = false;
         m_gravity.enabled = false;
+
+
+        // disable collider
         for ( int i = 0; i < colliders.Length; i++ )
         {
             colliders[i].enabled = false;
@@ -91,9 +102,13 @@ public class NetworkPlayer : NetworkBehaviour {
 
 
             killInfoText.text = "";
+
+            // reset transform information
             Transform spawnTrans = NetworkManager.singleton.GetStartPosition();
             transform.position = spawnTrans.position;
             transform.rotation = spawnTrans.rotation;
+
+            // enable script
             fireCon.enabled = true;
             playerCon.enabled = true;
             itemRec.enabled = true;

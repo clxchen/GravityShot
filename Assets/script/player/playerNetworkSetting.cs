@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class playerNetworkSetting : NetworkBehaviour {
+    // network player object setting
 
     private playercontrol playercontrl;
     private Transform cameraTrans;
