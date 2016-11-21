@@ -17,9 +17,18 @@ public class treasureCase : NetworkBehaviour {
 	void Start () {
         BoxCollider bx = GetComponent<BoxCollider>();
         Collider[] colliders =  Physics.OverlapSphere( transform.position,  bx.size.x> bx.size.z ? bx.size.x : bx.size.z );
+
         for (int i = 0; i < colliders.Length; i++)
+        {
             if (colliders[i].GetComponent<ItemScript>())
+            {
                 NetworkServer.Destroy(colliders[i].gameObject);
+                Debug.Log(colliders[i].name);
+            }
+
+
+            
+        }
 	}
 	
 	// Update is called once per frame

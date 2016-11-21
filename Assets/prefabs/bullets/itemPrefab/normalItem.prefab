@@ -92,6 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af221805ee251494996c12f6c8fc9afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liftTime: 10
+  rotatePerSecond: 60
+  float_Height: 0.1
+  float_speed: 2
 --- !u!114 &114000013489530764
 MonoBehaviour:
   m_ObjectHideFlags: 1

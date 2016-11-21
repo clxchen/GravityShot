@@ -14,7 +14,7 @@ public class bullet : NetworkBehaviour {
 
     // owner of this bullet
     private GameObject owner = null ;
-    private string tag = "";
+    private string m_tag = "";
     private Vector3 startPos;
     private float distant = 0 ;
 
@@ -107,11 +107,11 @@ public class bullet : NetworkBehaviour {
 
     public void setTag( string str )
     {
-        this.tag = str;
+        this.m_tag = str;
 
     }
 
-    public string getTag() { return this.tag; }
+    public string getTag() { return this.m_tag; }
 
 
     [ServerCallback]

@@ -104,12 +104,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 5
+  fireOffset: 0.2
   centerObj: {fileID: 0}
   range: 20
   cellBulletPrefab: {fileID: 1000011522322754, guid: 3694be53ba3d8df429ea51fdb3b612a9,
     type: 2}
   cell_amount: 20
-  angle: 30
+  angle: 60
 --- !u!114 &114000011935734914
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -157,3 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liftTime: 10
+  rotatePerSecond: 60
+  float_Height: 0.1
+  float_speed: 2
