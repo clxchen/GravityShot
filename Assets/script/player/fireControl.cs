@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
@@ -21,9 +22,11 @@ public class fireControl : NetworkBehaviour {
     private int bulletCount = 0;
 
     // Use this for initialization
-    void Start() {
-        if (isLocalPlayer)
-            m_bulletCenter = GameObject.Find("BulletCenter").GetComponent<bulletCenter>();
+    void Awake() {
+
+       if (isLocalPlayer)
+        m_bulletCenter = GameObject.Find("BulletCenter").GetComponent<bulletCenter>();
+     
 
         m_bulletType = m_bulletCenter.getBulletType(defaultBullet);
     }
