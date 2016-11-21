@@ -127,6 +127,9 @@ public class bullet : NetworkBehaviour {
         //Debug.Log(gameObject.name + "  hit   " + collider.gameObject.name);
         if (collider.tag == "TreasureCase") {
             collider.GetComponent<treasureCase>().OpenCase();
+        } else if ( collider.tag == "Player" )
+        {
+            collider.GetComponent<NetworkPlayer>().RpcGotHit();
         }
 
 

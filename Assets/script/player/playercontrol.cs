@@ -6,8 +6,6 @@ public class playercontrol : MonoBehaviour {
 
 
     private int inputLayer ;
-    public Color m_playerColor;
-    public string player_name;
 
     Camera camera ;
     Vector3 m_moveDirection;
@@ -23,7 +21,6 @@ public class playercontrol : MonoBehaviour {
         inputLayer = ~inputLayer;
         rigid = gameObject.GetComponentInParent<Rigidbody>();
         camera = Camera.main;
-        GetComponent<Renderer>().material.color = m_playerColor;
       
 
 

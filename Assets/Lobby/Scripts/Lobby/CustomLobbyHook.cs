@@ -12,11 +12,11 @@ public class CustomLobbyHook : LobbyHook {
 
         LobbyPlayer lbPlayer = lobbyPlayer.GetComponent<LobbyPlayer>();
 
-        playercontrol playerCon = gamePlayer.GetComponentInChildren<playercontrol>();
+        NetworkPlayer playerCon = gamePlayer.GetComponent<NetworkPlayer>();
 
 
         playerCon.m_playerColor = lbPlayer.playerColor;
-        playerCon.player_name = lbPlayer.playerName;
+        playerCon.m_playerName = lbPlayer.playerName;
 
 
     }

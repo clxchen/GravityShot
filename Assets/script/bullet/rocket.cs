@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class rocket : bullet {
 
-    public float exploseRange = 5 ;
+    public float exploseRange = 2f ;
     public ParticleSystem m_explose_particle;
 
     [ClientRpc]
@@ -48,6 +48,10 @@ public class rocket : bullet {
         if (collider.tag == "TreasureCase")
         {
             collider.GetComponent<treasureCase>().OpenCase();
+        }
+        else if (collider.tag == "Player")
+        {
+            collider.transform.parent.GetComponent<NetworkPlayer>().RpcGotHit();
         }
     }
 
