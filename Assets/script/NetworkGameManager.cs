@@ -23,7 +23,12 @@ public class NetworkGameManager : NetworkBehaviour {
 
     public void PlayerKillBy( GameObject player, bullet hitBullet )
     {
-        player.GetComponent<NetworkPlayer>().RpcGotHit( hitBullet.getOwnerName() );
+
+        string killString = "killed by " + hitBullet.getOwnerName();
+        if (player.name == hitBullet.getOwnerName())
+            killString = "You suicided!";
+
+        player.GetComponent<NetworkPlayer>().RpcGotHit( killString );
 
     }
 

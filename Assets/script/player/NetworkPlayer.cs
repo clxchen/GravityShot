@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Networking;
 
@@ -15,18 +16,21 @@ public class NetworkPlayer : NetworkBehaviour {
     public get_gravity m_gravity;
 
 
+    Text killInfoText;
     Transform body;
     Vector3 originPosition;
-    float upSpeed = 10f;
+    float upSpeed = 20f;
     [SyncVar]
     bool isDeath = false;
     Collider[] colliders;
 
 
 	void Start () {
+        gameObject.name = m_playerName;
         body = transform.FindChild("body");
         body.gameObject.GetComponent<Renderer>().material.color = m_playerColor;
         colliders = GetComponentsInChildren<Collider>();
+        killInfoText = GameObject.Find("killInfoText").GetComponent<Text>();
     }
 
     void Awake()
@@ -44,19 +48,20 @@ public class NetworkPlayer : NetworkBehaviour {
 
 
     [ClientRpc]
-    public void RpcGotHit( string playerName )
+    public void RpcGotHit( string killInfoString )
     {
         if( isLocalPlayer )
         {
-            Death();
+            Death( killInfoString );
             StartCoroutine(NetworkGameManager.sInstance.waitForRespawnTime( this ));
 
         }
     }
 
 
-    void Death()
+    void Death( string killInfoString )
     {
+        killInfoText.text = killInfoString;
         originPosition = body.localPosition;
         isDeath = true;
         fireCon.enabled = false;
@@ -85,6 +90,7 @@ public class NetworkPlayer : NetworkBehaviour {
             }
 
 
+            killInfoText.text = "";
             Transform spawnTrans = NetworkManager.singleton.GetStartPosition();
             transform.position = spawnTrans.position;
             transform.rotation = spawnTrans.rotation;

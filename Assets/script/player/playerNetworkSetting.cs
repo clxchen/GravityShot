@@ -13,9 +13,6 @@ public class playerNetworkSetting : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if (isLocalPlayer)
-            gameObject.name = "ME";
-
 
         playercontrl = gameObject.GetComponentInChildren<playercontrol>();
         cameraTrans = transform.FindChild("Camera");
