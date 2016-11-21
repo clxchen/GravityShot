@@ -73,8 +73,9 @@ public class bullet : NetworkBehaviour {
 
 
     // fire init
-    public virtual void CmdfireInit( Vector3 position, Vector3 forwardRotation )
+    public virtual void CmdfireInit( Vector3 position, Vector3 forwardRotation)
     {
+
         gameObject.SetActive(true);
         transform.forward = forwardRotation;
         transform.position = position + transform.forward * fireOffset;
@@ -111,6 +112,10 @@ public class bullet : NetworkBehaviour {
 
     }
 
+
+    public string getOwnerName( ) { return owner.name; }
+
+
     public string getTag() { return this.m_tag; }
 
 
@@ -129,7 +134,7 @@ public class bullet : NetworkBehaviour {
             collider.GetComponent<treasureCase>().OpenCase();
         } else if ( collider.tag == "Player" )
         {
-            collider.GetComponent<NetworkPlayer>().RpcGotHit();
+            NetworkGameManager.sInstance.PlayerKillBy(collider.transform.parent.gameObject, this);
         }
 
 

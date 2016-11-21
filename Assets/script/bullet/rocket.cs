@@ -51,7 +51,7 @@ public class rocket : bullet {
         }
         else if (collider.tag == "Player")
         {
-            collider.transform.parent.GetComponent<NetworkPlayer>().RpcGotHit();
+            NetworkGameManager.sInstance.PlayerKillBy(collider.transform.parent.gameObject, this);
         }
     }
 

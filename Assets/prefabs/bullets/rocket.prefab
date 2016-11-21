@@ -318,7 +318,7 @@ MonoBehaviour:
   fireOffset: 0.2
   centerObj: {fileID: 0}
   range: 5
-  exploseRange: 5
+  exploseRange: 2
   m_explose_particle: {fileID: 198000012810853064}
 --- !u!114 &114000013026976440
 MonoBehaviour:
