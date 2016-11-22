@@ -46,4 +46,11 @@ public class ShotGun : bullet {
         NetworkServer.Destroy(gameObject);
     }
 
+
+    [ServerCallback]
+    protected override void OnTriggerEnter(Collider collider)
+    {
+        // do nothing.
+    }
+
 }
