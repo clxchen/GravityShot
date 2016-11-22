@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
@@ -14,8 +15,8 @@ public class fireControl : NetworkBehaviour {
     public bulletCenter m_bulletCenter ;
     public BulletType m_bulletType;
 
-
-    private string defaultBullet = "rocket";
+    Text bulletCountText;
+    private string defaultBullet = "normal";
 
 
     float timer = 0 ;
@@ -29,6 +30,7 @@ public class fireControl : NetworkBehaviour {
      
 
         m_bulletType = m_bulletCenter.getBulletType(defaultBullet);
+        bulletCountText = GameObject.Find("bulletCountText").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -54,6 +56,19 @@ public class fireControl : NetworkBehaviour {
                 bulletCount = 0;
             }
         }
+
+        if ( m_bulletType != null )
+        {
+            if (m_bulletType.maxBullet != -1)
+                bulletCountText.text = (m_bulletType.maxBullet - bulletCount) + " / " + m_bulletType.maxBullet.ToString();
+            else
+                bulletCountText.text = " - / - ";
+
+        } else
+        {
+            bulletCountText.text = "";
+        }
+
 
         timer += Time.deltaTime;
     }
