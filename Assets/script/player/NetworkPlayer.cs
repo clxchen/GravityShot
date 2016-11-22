@@ -5,11 +5,6 @@ using UnityEngine.Networking;
 
 public class NetworkPlayer : NetworkBehaviour {
 
-    [SyncVar]
-    public Color m_playerColor ;
-    [SyncVar]
-    public string m_playerName;
-
     public fireControl fireCon;
     public playercontrol playerCon;
     public itemReceiver itemRec;
@@ -28,9 +23,7 @@ public class NetworkPlayer : NetworkBehaviour {
 
 
 	void Start () {
-        gameObject.name = m_playerName;
         body = transform.FindChild("body");
-        body.gameObject.GetComponent<Renderer>().material.color = m_playerColor;
         colliders = GetComponentsInChildren<Collider>();
         killInfoText = GameObject.Find("killInfoText").GetComponent<Text>();
     }
@@ -113,6 +106,8 @@ public class NetworkPlayer : NetworkBehaviour {
             playerCon.enabled = true;
             itemRec.enabled = true;
             m_gravity.enabled = true;
+
+            fireCon.useDefaultBullet();
 
         }
     }

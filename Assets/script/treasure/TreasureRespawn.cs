@@ -57,6 +57,7 @@ public class TreasureRespawn : NetworkBehaviour {
 	}
 	
 	// Update is called once per frame
+    [ServerCallback]
 	void Update () {
 	    if ( timer >= respawnTimeOffset  )
         {
@@ -67,7 +68,7 @@ public class TreasureRespawn : NetworkBehaviour {
                 respawnACase(caseReadyToRespawn[index]);
                 caseReadyToRespawn.RemoveAt(index);
                 timer = 0;
-
+                
             }
 
         }

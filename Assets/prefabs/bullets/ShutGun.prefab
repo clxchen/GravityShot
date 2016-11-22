@@ -103,13 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc7940e2a55b2c489ca0ca04a5e9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 5
+  m_speed: 10
   fireOffset: 0.2
   centerObj: {fileID: 0}
   range: 20
   cellBulletPrefab: {fileID: 1000011522322754, guid: 3694be53ba3d8df429ea51fdb3b612a9,
     type: 2}
-  cell_amount: 20
+  cell_amount: 10
   angle: 60
 --- !u!114 &114000011935734914
 MonoBehaviour:

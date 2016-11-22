@@ -23,7 +23,12 @@ public class bullet : NetworkBehaviour {
 	void Start () {
        
         centerObj = GameObject.Find("planet").transform;
-	}
+        foreach(Transform trans in NetworkManager.singleton.startPositions)
+        {
+            Debug.Log( trans.gameObject.name + "  " + Vector3.Distance(trans.position, centerObj.position).ToString());
+        } 
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
