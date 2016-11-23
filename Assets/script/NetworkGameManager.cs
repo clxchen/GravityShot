@@ -23,9 +23,15 @@ public class NetworkGameManager : NetworkBehaviour {
 	    
 	}
 
+    [ServerCallback]
+    public void suicidedRequest( GameObject player )
+    {
+        player.GetComponent<NetworkPlayer>().RpcGotHit("commit suicide!");
+    }
 
     // player killed
     // bullet ----> network game manager ----> player
+    [ServerCallback]
     public void PlayerKillBy( GameObject player, bullet hitBullet )
     {
 

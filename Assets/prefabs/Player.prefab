@@ -96,7 +96,6 @@ GameObject:
   - 114: {fileID: 114000013632711338}
   - 114: {fileID: 114000012260030294}
   - 114: {fileID: 114000010587826806}
-  - 81: {fileID: 81000012425648954}
   - 82: {fileID: 82000010622580500}
   - 82: {fileID: 82000012882960870}
   m_Layer: 0
@@ -347,19 +346,12 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013733605720}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4602d3df54ad2f049a449af77235ebfd, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99999994, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &81000012425648954
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014014216658}
-  m_Enabled: 1
 --- !u!81 &81000014227540312
 AudioListener:
   m_ObjectHideFlags: 1

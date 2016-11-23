@@ -43,12 +43,18 @@ public class NetworkPlayer : NetworkBehaviour {
             body.localPosition += new Vector3(0,1,0) * upSpeed * Time.deltaTime;
         } else if ( Input.GetKeyDown(KeyCode.Q)) 
         {
-            RpcGotHit( "suicide command!" );
+            CmdSuicideRequest();
            
             
         }
 	}
 
+
+    [Command]
+    void CmdSuicideRequest()
+    {
+        NetworkGameManager.sInstance.suicidedRequest(gameObject);
+    }
 
     [ClientRpc]
     public void RpcGotHit( string killInfoString )
