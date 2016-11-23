@@ -9,12 +9,14 @@ public class NetworkPlayer : NetworkBehaviour {
     public playercontrol playerCon;
     public itemReceiver itemRec;
     public get_gravity m_gravity;
-
+    public AudioSource DeathAudio;
 
     Text killInfoText;
     Transform body;
     Vector3 originPosition;
     float upSpeed = 20f;
+    
+
 
     [SyncVar]
     bool isDeath = false;
@@ -82,6 +84,8 @@ public class NetworkPlayer : NetworkBehaviour {
             colliders[i].enabled = false;
         }
 
+        if (DeathAudio)
+            DeathAudio.Play();
 
     }
 

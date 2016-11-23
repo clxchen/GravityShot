@@ -12,6 +12,9 @@ public class ShotGun : bullet {
     
     public override void CmdfireInit(Vector3 position, Vector3 forwardRotation)
     {
+
+
+
         centerObj = GameObject.Find("planet").transform;
         for ( int i = 0;  i < cell_amount; i++ )
         {

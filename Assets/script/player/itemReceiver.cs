@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 public class itemReceiver : NetworkBehaviour {
 
     fireControl fireControl;
+    public AudioSource receiveAudio;
 
     void Start()
     {
@@ -23,6 +24,8 @@ public class itemReceiver : NetworkBehaviour {
             if (fireControl)
             {
                 fireControl.getBullet(bulletType);
+                if (receiveAudio)
+                    receiveAudio.Play();
             }
             else
             {
