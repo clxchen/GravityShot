@@ -32,6 +32,7 @@ public class rocket : bullet {
 
         m_explose_particle.transform.parent = null;
         m_explose_particle.Play();
+        m_explose_particle.gameObject.GetComponent<AudioSource>().Play();
         Destroy(m_explose_particle.gameObject, m_explose_particle.duration);
 
         //self destruct

@@ -98,6 +98,7 @@ GameObject:
   - 114: {fileID: 114000010587826806}
   - 81: {fileID: 81000012425648954}
   - 82: {fileID: 82000010622580500}
+  - 82: {fileID: 82000012882960870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -441,6 +442,81 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82000012882960870
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014014216658}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300001, guid: 41f60f608061e2443837763b6e01cb66,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 568cb4b92dd26e04494ac9a4400d6072, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.17
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 124
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &92000010979070270
 Behaviour:
   m_ObjectHideFlags: 1
@@ -475,6 +551,7 @@ MonoBehaviour:
   playerCon: {fileID: 114000010303928788}
   itemRec: {fileID: 114000012260030294}
   m_gravity: {fileID: 114000013619049636}
+  DeathAudio: {fileID: 82000010622580500}
 --- !u!114 &114000010886080388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -499,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ad2c0041dd6e44ca0ce924036e5083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  receiveAudio: {fileID: 82000012882960870}
 --- !u!114 &114000013619049636
 MonoBehaviour:
   m_ObjectHideFlags: 1
