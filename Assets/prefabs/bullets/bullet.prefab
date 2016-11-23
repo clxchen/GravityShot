@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 114000010235568374}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 10
   fireOffset: 0.2
-  centerObj: {fileID: 0}
   range: 50
 --- !u!114 &114000010235568374
 MonoBehaviour:

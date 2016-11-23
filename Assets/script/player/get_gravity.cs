@@ -18,8 +18,7 @@ public class get_gravity : MonoBehaviour {
     void FixedUpdate()
     {
 
-        getGravity(planet);
-
+        getGravity(planet);       
     }
 
     void getGravity( gravity_planet planet )

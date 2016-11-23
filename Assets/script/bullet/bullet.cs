@@ -5,36 +5,36 @@ using UnityEngine.Networking;
 public class bullet : NetworkBehaviour {
 
 
-   
-    public float m_speed = 5f;
+    [SerializeField]
+    protected float m_speed = 5f;
+
     // gun point offset to avoid hit self when firing.
-    public float fireOffset = 0.2f;
-    public Transform centerObj;         // fly around with this object
-    public float range ;
+    [SerializeField]
+    protected float fireOffset ;
+
+    protected Transform centerObj;         // fly around with this object
+    [SerializeField]
+    protected float range ;
 
     // owner of this bullet
     private GameObject owner = null ;
     private string m_tag = "";
     private Vector3 startPos;
-    private float distant = 0 ;
+    protected float distant = 0 ;
 
 
 	// Use this for initialization
 	void Start () {
        
         centerObj = GameObject.Find("planet").transform;
-        foreach(Transform trans in NetworkManager.singleton.startPositions)
-        {
-            Debug.Log( trans.gameObject.name + "  " + Vector3.Distance(trans.position, centerObj.position).ToString());
-        } 
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    virtual protected void Update () {
         if (gameObject.activeSelf)
         {
-            planetMode();
+            planetMode();           
             distant += m_speed *Time.deltaTime ;
 
             if ( distant >= range )

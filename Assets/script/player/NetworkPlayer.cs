@@ -39,6 +39,11 @@ public class NetworkPlayer : NetworkBehaviour {
 	    if ( isDeath )
         {
             body.localPosition += new Vector3(0,1,0) * upSpeed * Time.deltaTime;
+        } else if ( Input.GetKeyDown(KeyCode.Q)) 
+        {
+            RpcGotHit( "suicide command!" );
+           
+            
         }
 	}
 
@@ -88,12 +93,6 @@ public class NetworkPlayer : NetworkBehaviour {
             isDeath = false;
             body.localPosition = originPosition;
 
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                colliders[i].enabled = true;
-            }
-
-
             killInfoText.text = "";
 
             // reset transform information
@@ -108,6 +107,12 @@ public class NetworkPlayer : NetworkBehaviour {
             m_gravity.enabled = true;
 
             fireCon.useDefaultBullet();
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                colliders[i].enabled = true;
+            }
+
 
         }
     }

@@ -77,7 +77,7 @@ GameObject:
   - 65: {fileID: 65000011994539148}
   m_Layer: 0
   m_Name: rocket
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 5
   fireOffset: 0.2
-  centerObj: {fileID: 0}
   range: 5
   exploseRange: 2
   m_explose_particle: {fileID: 198000012810853064}
