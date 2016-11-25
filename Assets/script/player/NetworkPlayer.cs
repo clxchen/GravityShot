@@ -10,12 +10,16 @@ public class NetworkPlayer : NetworkBehaviour {
     public itemReceiver itemRec;
     public get_gravity m_gravity;
     public AudioSource DeathAudio;
+    public AudioSource killAudio;
+
+    Rigidbody rigid;
 
     Text killInfoText;
+    Text killText;
     Transform body;
     Vector3 originPosition;
     float upSpeed = 20f;
-    
+    float killTextTimer ;
 
 
     [SyncVar]
@@ -28,6 +32,9 @@ public class NetworkPlayer : NetworkBehaviour {
         body = transform.FindChild("body");
         colliders = GetComponentsInChildren<Collider>();
         killInfoText = GameObject.Find("killInfoText").GetComponent<Text>();
+        killText = GameObject.Find("killText").GetComponent<Text>();
+        StartCoroutine(killTextUI());
+        rigid = GetComponent<Rigidbody>();
     }
 
     void Awake()
@@ -53,7 +60,7 @@ public class NetworkPlayer : NetworkBehaviour {
     [Command]
     void CmdSuicideRequest()
     {
-        NetworkGameManager.sInstance.suicidedRequest(gameObject);
+        NetworkGameManager.sInstance.suicideRequest(gameObject);
     }
 
     [ClientRpc]
@@ -65,6 +72,31 @@ public class NetworkPlayer : NetworkBehaviour {
             Death( killInfoString );
             StartCoroutine(NetworkGameManager.sInstance.waitForRespawnTime( this ));
 
+        }
+    }
+
+    [ClientRpc]
+    public void RpcKillNotify( string killInfoString )
+    {
+        if ( isLocalPlayer  )
+        {
+            killText.text = killInfoString ;
+            killTextTimer = Time.time + 2f ;
+            if (killAudio)
+                killAudio.Play();
+        }
+    }
+
+
+    IEnumerator killTextUI()
+    {
+        for ( float timer = Time.time ; true;  timer+=Time.deltaTime )
+        {
+
+            if (timer > killTextTimer)
+                killText.text = "";
+
+            yield return Time.deltaTime;
         }
     }
 
@@ -109,6 +141,11 @@ public class NetworkPlayer : NetworkBehaviour {
             Transform spawnTrans = NetworkManager.singleton.GetStartPosition();
             transform.position = spawnTrans.position;
             transform.rotation = spawnTrans.rotation;
+
+            // reset physics
+            rigid.velocity = Vector3.zero;
+            rigid.angularVelocity = Vector3.zero;
+            
 
             // enable script
             fireCon.enabled = true;

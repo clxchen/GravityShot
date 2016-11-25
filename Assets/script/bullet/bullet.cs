@@ -88,6 +88,18 @@ public class bullet : NetworkBehaviour {
         distant = 0;
     }
 
+    public virtual void CmdfireInit(Vector3 position, Vector3 forwardRotation, GameObject owner)
+    {
+
+        gameObject.SetActive(true);
+        transform.forward = forwardRotation;
+        transform.position = position + transform.forward * fireOffset;
+        startPos = position;
+        this.owner = owner;
+        distant = 0;
+    }
+
+
     public void checkLifeCicleEnd()
     {
 
@@ -108,6 +120,11 @@ public class bullet : NetworkBehaviour {
 
         this.owner = owner;
 
+    }
+
+    public GameObject getOwner()
+    {
+        return owner;
     }
 
 

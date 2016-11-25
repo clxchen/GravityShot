@@ -24,7 +24,7 @@ public class NetworkGameManager : NetworkBehaviour {
 	}
 
     [ServerCallback]
-    public void suicidedRequest( GameObject player )
+    public void suicideRequest( GameObject player )
     {
         player.GetComponent<NetworkPlayer>().RpcGotHit("commit suicide!");
     }
@@ -39,6 +39,9 @@ public class NetworkGameManager : NetworkBehaviour {
         if (player.name == hitBullet.getOwnerName())
             killString = "You suicided!";
 
+
+        NetworkPlayer killPlayer = hitBullet.getOwner().GetComponent<NetworkPlayer>();
+        killPlayer.RpcKillNotify("You killed " + player.name);
         player.GetComponent<NetworkPlayer>().RpcGotHit( killString );
 
     }

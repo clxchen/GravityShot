@@ -10,12 +10,13 @@ public class ShotGun : bullet {
     public float angle ;
 
     
-    public override void CmdfireInit(Vector3 position, Vector3 forwardRotation)
+    public override void CmdfireInit(Vector3 position, Vector3 forwardRotation, GameObject owner )
     {
 
 
 
         centerObj = GameObject.Find("planet").transform;
+        transform.position += transform.forward * fireOffset;
         for ( int i = 0;  i < cell_amount; i++ )
         {
 
@@ -38,8 +39,9 @@ public class ShotGun : bullet {
             bul.transform.Rotate( new Vector3(0, offset,0) );
             Debug.Log(bul.transform.forward);
             //bul.transform.Rotate(0, offset, 0);
-            bul.setOwner(this.gameObject);            
+            bul.setOwner(owner);            
         }
+
     }
 
 
