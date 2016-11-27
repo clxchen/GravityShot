@@ -5,6 +5,11 @@ using UnityEngine.Networking;
 
 public class NetworkPlayer : NetworkBehaviour {
 
+
+    public int kill_count = 0 ;
+    public int death_count = 0;
+    public int point = 0;
+
     public fireControl fireCon;
     public playercontrol playerCon;
     public itemReceiver itemRec;

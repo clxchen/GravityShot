@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
@@ -8,9 +9,13 @@ public class NetworkGameManager : NetworkBehaviour {
     // singleton
     static public NetworkGameManager sInstance ;
     static public List<GameObject> players = new List<GameObject>();
+    public scoreboardCell scoreboard;
+    public RectTransform playerListRect ;
+
 
     public float respawnTime = 2f;
 
+    string kname = "87";
 
 	
 	void Awake () {
@@ -19,9 +24,15 @@ public class NetworkGameManager : NetworkBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	    
+	void Update () { 
+        if ( Input.GetKeyDown(KeyCode.Z) )
+        {
+            GameObject go = GameObject.Instantiate(scoreboard.gameObject);
+            go.transform.SetParent(playerListRect, false);
+        }
+
 	}
+
 
     [ServerCallback]
     public void suicideRequest( GameObject player )
@@ -39,6 +50,7 @@ public class NetworkGameManager : NetworkBehaviour {
         if (player.name == hitBullet.getOwnerName())
             killString = "You suicided!";
 
+        kname = "666";
 
         NetworkPlayer killPlayer = hitBullet.getOwner().GetComponent<NetworkPlayer>();
         killPlayer.RpcKillNotify("You killed " + player.name);
