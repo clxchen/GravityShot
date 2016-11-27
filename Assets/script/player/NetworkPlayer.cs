@@ -6,10 +6,16 @@ using UnityEngine.Networking;
 
 public class NetworkPlayer : NetworkBehaviour {
 
-
+    [SyncVar]
     public int kill_count = 0 ;
+    [SyncVar]
     public int death_count = 0;
+    [SyncVar]
     public int point = 0;
+    [SyncVar]
+    public Color playerColor;
+    [SyncVar]
+    public string playerName;
 
     public fireControl fireCon;
     public playercontrol playerCon;
@@ -175,7 +181,7 @@ public class NetworkPlayer : NetworkBehaviour {
     {
         
 
-        return p1.GetComponent<NetworkPlayer>().point.CompareTo(p2.GetComponent<NetworkPlayer>().point);
+        return p2.GetComponent<NetworkPlayer>().point.CompareTo(p1.GetComponent<NetworkPlayer>().point);
 
     }
 

@@ -36,6 +36,13 @@ public class playerNetworkSetting : NetworkBehaviour {
         inputCol = transform.FindChild("inputCollider").GetComponent<Collider>() ;
         networkPlayer = GetComponent<NetworkPlayer>();
 
+        if (networkPlayer)
+        {
+            networkPlayer.playerName = m_playerName;
+            networkPlayer.playerColor = m_playerColor;
+        }
+
+
         if ( !isLocalPlayer )
         {
             if (playercontrl)
@@ -55,7 +62,7 @@ public class playerNetworkSetting : NetworkBehaviour {
             if (networkPlayer)
                 networkPlayer.enabled = false;
 
-        }
+        } 
 
 
 	
