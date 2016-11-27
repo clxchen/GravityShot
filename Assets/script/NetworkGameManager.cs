@@ -15,8 +15,6 @@ public class NetworkGameManager : NetworkBehaviour {
 
     public float respawnTime = 2f;
 
-    string kname = "87";
-
 	
 	void Awake () {
         //singleton
@@ -32,6 +30,28 @@ public class NetworkGameManager : NetworkBehaviour {
         }
 
 	}
+
+
+    [ClientRpc]
+    void RpcUpdateScoreboard()
+    {
+        // update scoreboard locally.
+
+
+
+    }
+
+
+
+    // update scoreboard
+    [ServerCallback]
+    void UpdateScoreboard()
+    {
+        NetworkGameManager.players.Sort( NetworkPlayer.compareByPoint );
+        RpcUpdateScoreboard();
+    }
+
+   
 
 
     [ServerCallback]
@@ -50,7 +70,7 @@ public class NetworkGameManager : NetworkBehaviour {
         if (player.name == hitBullet.getOwnerName())
             killString = "You suicided!";
 
-        kname = "666";
+        
 
         NetworkPlayer killPlayer = hitBullet.getOwner().GetComponent<NetworkPlayer>();
         killPlayer.RpcKillNotify("You killed " + player.name);

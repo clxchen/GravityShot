@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 
 public class NetworkPlayer : NetworkBehaviour {
@@ -167,6 +168,15 @@ public class NetworkPlayer : NetworkBehaviour {
 
 
         }
+    }
+
+
+    public static int compareByPoint( GameObject p1, GameObject p2 )
+    {
+        
+
+        return p1.GetComponent<NetworkPlayer>().point.CompareTo(p2.GetComponent<NetworkPlayer>().point);
+
     }
 
 

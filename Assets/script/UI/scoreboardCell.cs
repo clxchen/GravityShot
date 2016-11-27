@@ -12,4 +12,5 @@ public class scoreboardCell : MonoBehaviour {
     public Text pointText;
     
 
+
 }
