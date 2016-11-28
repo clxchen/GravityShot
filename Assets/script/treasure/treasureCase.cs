@@ -16,7 +16,6 @@ public class treasureCase : NetworkBehaviour {
 	// Use this for initialization
     [ServerCallback]
 	void Start () {
-        BoxCollider bx = GetComponent<BoxCollider>();
         Collider[] colliders =  Physics.OverlapSphere( transform.position,  0.6f );
 
         for (int i = 0; i < colliders.Length; i++)

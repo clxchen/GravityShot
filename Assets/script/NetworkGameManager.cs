@@ -14,7 +14,7 @@ public class NetworkGameManager : NetworkBehaviour {
 
 
     List<scoreboardCell> scoreboardCells = new List<scoreboardCell>();
-    bool scoreInit = false;
+
 
     public float respawnTime = 2f;
 
@@ -22,18 +22,25 @@ public class NetworkGameManager : NetworkBehaviour {
 	void Awake () {
         //singleton
         sInstance = this ;
-       
+    }
 
+    [ServerCallback]
+    void Start() {
+        StartCoroutine(delayUpdateScoreboard());
     }
 	
 	// Update is called once per frame
-	void Update () { 
-        if ( Input.GetKeyDown(KeyCode.Z) )
-        {
-            GameObject go = GameObject.Instantiate(scoreboard.gameObject);
-            go.transform.SetParent(playerListRect, false);
-        }        
+    [ServerCallback]
+	void Update () {
+      
     }
+
+    IEnumerator delayUpdateScoreboard()
+    {
+        yield return new WaitForSeconds(2);
+        UpdateScoreboard();
+    }
+
 
 
     [ServerCallback]
@@ -70,10 +77,11 @@ public class NetworkGameManager : NetworkBehaviour {
     {
         
 
-        if (scoreInit )
+        if (NetworkGameManager.players.Count==scoreboardCells.Count)
             return;       
 
-        for( int i = 0; i <NetworkGameManager.players.Count; i++  )
+
+        for( int i = scoreboardCells.Count; i <NetworkGameManager.players.Count; i++  )
         {
             GameObject go = GameObject.Instantiate(scoreboard.gameObject);
             go.transform.SetParent(playerListRect, false);
@@ -81,8 +89,6 @@ public class NetworkGameManager : NetworkBehaviour {
             scoreboardCells.Add(go.GetComponent<scoreboardCell>());
         }
 
-
-        scoreInit = true;
     }
 
 
@@ -90,7 +96,7 @@ public class NetworkGameManager : NetworkBehaviour {
 
     // update scoreboard
     [ServerCallback]
-    void UpdateScoreboard()
+    public void UpdateScoreboard()
     {
         NetworkGameManager.players.Sort( NetworkPlayer.compareByPoint );
         RpcUpdateScoreboard();

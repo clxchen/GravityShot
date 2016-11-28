@@ -30,7 +30,7 @@ public class NetworkPlayer : NetworkBehaviour {
     Text killText;
     Transform body;
     Vector3 originPosition;
-    float upSpeed = 20f;
+    float upSpeed = 15f;
     float killTextTimer ;
 
 
@@ -53,6 +53,7 @@ public class NetworkPlayer : NetworkBehaviour {
     {
         // add to player list
         NetworkGameManager.players.Add(gameObject);
+        
     }
 	
 	// Update is called once per frame
@@ -120,6 +121,7 @@ public class NetworkPlayer : NetworkBehaviour {
         originPosition = body.localPosition;
         
         isDeath = true;
+        //rigid.AddForce(transform.up * 500f);
 
         // disable script when death
         fireCon.enabled = false;

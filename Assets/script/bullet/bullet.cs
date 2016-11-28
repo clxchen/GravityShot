@@ -59,7 +59,6 @@ public class bullet : NetworkBehaviour {
 
         float degreeToTurn = percentOfCircumference * 360;
 
-        Vector3 ps = transform.position;
         // use cross product to create axis 
         transform.RotateAround(centerObj.position, Vector3.Cross(centerToThis, transform.forward), degreeToTurn);
         
