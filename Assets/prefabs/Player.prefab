@@ -99,6 +99,7 @@ GameObject:
   - 82: {fileID: 82000010622580500}
   - 82: {fileID: 82000012882960870}
   - 82: {fileID: 82000013074867742}
+  - 114: {fileID: 114000014016647334}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -615,6 +616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd60ac3b043b9e44aace8bbbb1189e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kill_count: 0
+  death_count: 0
+  point: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerName: 
   fireCon: {fileID: 114000013632711338}
   playerCon: {fileID: 114000010303928788}
   itemRec: {fileID: 114000012260030294}
@@ -718,6 +724,19 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.5
   m_InterpolateMovement: 0.5
+--- !u!114 &114000014016647334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014014216658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1450ee6b79c2a9c41a9d6ed36c35175b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatText: {fileID: 0}
+  playerName: 
 --- !u!114 &114000014294839540
 MonoBehaviour:
   m_ObjectHideFlags: 1

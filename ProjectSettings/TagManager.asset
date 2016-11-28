@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TreasureCase
   - Bullet
+  - Chatroom
   layers:
   - Default
   - TransparentFX

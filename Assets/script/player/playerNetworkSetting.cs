@@ -18,6 +18,8 @@ public class playerNetworkSetting : NetworkBehaviour {
     private Collider inputCol;
     private fireControl fireCon;
     private NetworkPlayer networkPlayer;
+    private chatScript chat;
+
 
 	// Use this for initialization
 	void Start () {
@@ -31,10 +33,13 @@ public class playerNetworkSetting : NetworkBehaviour {
         playercontrl = gameObject.GetComponentInChildren<playercontrol>();
         cameraTrans = transform.FindChild("Camera");
         camera = cameraTrans.GetComponent<Camera>();
+        chat = GetComponent<chatScript>();
         audioListener = cameraTrans.GetComponent<AudioListener>();
         fireCon = gameObject.GetComponentInChildren<fireControl>();
         inputCol = transform.FindChild("inputCollider").GetComponent<Collider>() ;
         networkPlayer = GetComponent<NetworkPlayer>();
+
+
 
         if (networkPlayer)
         {
@@ -45,6 +50,9 @@ public class playerNetworkSetting : NetworkBehaviour {
 
         if ( !isLocalPlayer )
         {
+            if (chat)
+                chat.enabled = false;
+
             if (playercontrl)
                 playercontrl.enabled = false;
 

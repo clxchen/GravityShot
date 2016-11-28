@@ -54,8 +54,6 @@ public class NetworkGameManager : NetworkBehaviour {
             //scoreboardCells[i].RpcUpdateScore(p.playerColor,p.playerName,p.kill_count,p.death_count,p.point);
             RpcReceiveUpdateScore(i,p.playerColor, p.playerName, p.kill_count, p.death_count, p.point);
         }
-
-
     }
 
     [ClientRpc]
@@ -102,7 +100,20 @@ public class NetworkGameManager : NetworkBehaviour {
         RpcUpdateScoreboard();
     }
 
-   
+
+    [ServerCallback]
+    public void OnReceiveMessageFromClient(string text)
+    {
+        // boardcast to every client
+        for(  int i = 0; i < players.Count; i++ )
+        {
+            chatScript chat = players[i].GetComponent<chatScript>();
+            chat.RpcReceiveMessage(text);
+        }
+    }
+
+
+      
 
 
     [ServerCallback]
