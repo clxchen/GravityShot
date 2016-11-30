@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 10
-  fireOffset: 0
+  fireOffset: 0.2
   range: 20
 --- !u!114 &114000011961421252
 MonoBehaviour:
