@@ -63,7 +63,7 @@ public class playercontrol : MonoBehaviour {
 
     void FixedUpdate()
     {
-        // move. depends on parent direction set up
-        rigid.MovePosition(transform.position + transform.parent.transform.TransformDirection(m_moveDirection) * moveSpeed * Time.deltaTime);
+        // move. depends on parent direction set up        
+        rigid.MovePosition(transform.parent.position + transform.parent.TransformDirection(m_moveDirection) * moveSpeed * Time.deltaTime);
     }
 }

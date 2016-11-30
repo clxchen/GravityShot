@@ -159,7 +159,7 @@ public class NetworkPlayer : NetworkBehaviour {
             // reset physics
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
-            
+            rigid.Sleep();
 
             // enable script
             fireCon.enabled = true;
