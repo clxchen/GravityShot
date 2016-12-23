@@ -9,6 +9,8 @@ public class chatScript : NetworkBehaviour {
     public InputField inputF;
     public string playerName;
 
+    [SerializeField]
+    int max_line = 10;
 
     void Start()
     {
@@ -49,8 +51,29 @@ public class chatScript : NetworkBehaviour {
     [ClientRpc]
     public void RpcReceiveMessage(string message)
     {
-        if ( isLocalPlayer )
-            chatText.text += message + "\n";
+        if (isLocalPlayer)
+        {
+            chatText.text += message + '\n';
+            string[] strs = chatText.text.Split('\n');
+            if ( strs.Length > max_line )
+            {
+                bool isFound = false;
+                int i = 0;
+                for ( ; i < chatText.text.Length && !isFound ;i++)
+                {
+                    if (chatText.text[i] == '\n')
+                        isFound = true;                   
+                }
+
+                if (isFound)
+                {
+                    chatText.text = chatText.text.Remove(0, i);
+                    
+                    
+                }
+            }
+
+        }
     }
 
 

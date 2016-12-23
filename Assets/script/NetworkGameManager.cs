@@ -11,12 +11,15 @@ public class NetworkGameManager : NetworkBehaviour {
     static public List<GameObject> players = new List<GameObject>();
     public scoreboardCell scoreboard;
     public RectTransform playerListRect ;
-
+    [SerializeField]
+    int winningPoints = 30;
 
     List<scoreboardCell> scoreboardCells = new List<scoreboardCell>();
 
 
     public float respawnTime = 2f;
+
+    bool mResult = false;
 
 	
 	void Awake () {
@@ -145,12 +148,27 @@ public class NetworkGameManager : NetworkBehaviour {
             killerPlayer.point++;
             killerPlayer.kill_count++;
 
+            if (!mResult)               
+            {
+                if ( killerPlayer.point >= winningPoints )
+                {
+                    OnReceiveMessageFromClient("////////////////////////");
+                    OnReceiveMessageFromClient("Player : " + killerPlayer.name + " win");
+                    OnReceiveMessageFromClient("////////////////////////");
+                    mResult = true;
+                }
+            }
+
         }
 
         
         p.death_count++;
         p.RpcGotHit( killString );
         UpdateScoreboard();
+
+
+        
+
     }
 
 
